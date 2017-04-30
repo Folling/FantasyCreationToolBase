@@ -1,3 +1,32 @@
 ﻿  main.cpp
-  FantasyThingyBase.vcxproj -> C:\Users\Folling\documents\visual studio 2015\Projects\FantasyThingyBase\Debug\FantasyThingyBase.exe
-  FantasyThingyBase.vcxproj -> C:\Users\Folling\documents\visual studio 2015\Projects\FantasyThingyBase\Debug\FantasyThingyBase.pdb (Partial PDB)
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(20): error C2065: 'CustomAttribute': undeclared identifier
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(20): error C2923: 'std::vector': 'CustomAttribute' is not a valid template type argument for parameter '_Ty'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(20): error C3203: 'allocator': unspecialized class template can't be used as a template argument for template parameter '_Alloc', expected a real type
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(22): error C2065: 'CustomAttribute': undeclared identifier
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(22): error C2923: 'std::vector': 'CustomAttribute' is not a valid template type argument for parameter '_Ty'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(22): error C3203: 'allocator': unspecialized class template can't be used as a template argument for template parameter '_Alloc', expected a real type
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(25): error C2065: 'CustomAttribute': undeclared identifier
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(25): error C2923: 'std::vector': 'CustomAttribute' is not a valid template type argument for parameter '_Ty'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customclass.h(25): error C3203: 'allocator': unspecialized class template can't be used as a template argument for template parameter '_Alloc', expected a real type
+  CustomClass.cpp
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(17): error C3646: 'Entity': unknown override specifier
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  CustomAttribute.cpp
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(17): error C3646: 'Entity': unknown override specifier
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(68): error C2039: 'Entity': is not a member of 'CCList::Class'
+  c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(14): note: see declaration of 'CCList::Class'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(68): error C2228: left of '.printAttributes' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(72): error C2039: 'Entity': is not a member of 'CCList::Class'
+  c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(14): note: see declaration of 'CCList::Class'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(72): error C2228: left of '.getAttributes' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(72): error C2228: left of '.size' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(75): error C2039: 'Entity': is not a member of 'CCList::Class'
+  c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(14): note: see declaration of 'CCList::Class'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(75): error C2228: left of '.getName' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(76): error C2039: 'Entity': is not a member of 'CCList::Class'
+  c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\cclist.h(14): note: see declaration of 'CCList::Class'
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(76): error C2228: left of '.getAttributes' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(76): error C2228: left of '.at' must have class/struct/union
+c:\users\folling\documents\visual studio 2015\projects\fantasythingybase\fantasythingybase\customattribute.cpp(76): error C2228: left of '.getName' must have class/struct/union
+  Generating Code...

@@ -1,15 +1,15 @@
 #include "CustomAttribute.h"
 #include "CustomClass.h"
-#include <iostream>
 #include <conio.h>
 #include "CCList.h"
+#include <iostream>
+
 
 void printInfo();
 
 int main()
 {
 	int input;
-	CCList CustomList;
 	printInfo();
 	while(true)
 	{	
@@ -19,17 +19,17 @@ int main()
 		try {
 			switch (input)
 			{
-			case 1: CustomList.newNode();
+			case 1: MainList.newNode();
 				break;
-			case 2: CustomList.addAttributeToNode(CustomList.selectNode());
+			case 2: MainList.addAttributeToNode(MainList.selectNode());
 				break;
-			case 3: CustomList.printList();
+			case 3: MainList.printList();
 				break;
-			case 4: CustomList.selectNode()->Entity.printAttributes();
+			case 4: MainList.selectNode()->Entity.printAttributes();
 				break;
-			case 5: CustomList.removeNode(CustomList.selectNode());
+			case 5: MainList.removeNode(MainList.selectNode());
 				break;
-			case 6: CustomList.selectNode()->Entity.removeAttribute();
+			case 6: MainList.selectNode()->Entity.removeAttribute();
 				break;
 			case 7: printInfo();
 				break;

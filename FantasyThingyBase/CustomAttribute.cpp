@@ -1,7 +1,8 @@
+#include "CustomClass.h"
 #include "CustomAttribute.h"
-#include <cctype>
 
-enum Type {
+enum Type
+{
 	Bool = 0,
 	Char = 1,
 	Short = 2,
@@ -32,29 +33,54 @@ CustomAttribute::~CustomAttribute()
 
 void CustomAttribute::determineType(std::string selection)
 {
-	for(int i = 0; i < selection.size(); i++)
+	for (unsigned int i = 0; i < selection.size(); i++)
 	{
 		if (selection.at(i) == 32)selection.erase(selection.begin() + i);
-		else std::tolower(selection.at(i));
+		else tolower(selection.at(i));
 	}
 	std::cout << selection << std::endl;
-	if		(selection.find("bool"      ) != std::string::npos) this->type = Bool       ;
-	else if (selection.find("char"      ) != std::string::npos) this->type = Char       ;
-	else if (selection.find("short"     ) != std::string::npos) this->type = Short      ;
-	else if (selection.find("int"       ) != std::string::npos) this->type = Int        ;
-	else if (selection.find("long"      ) != std::string::npos) this->type = Long       ;
-	else if (selection.find("longlong"  ) != std::string::npos) this->type = LongLong   ;
-	else if (selection.find("float"     ) != std::string::npos) this->type = Float      ;
-	else if (selection.find("double"    ) != std::string::npos) this->type = Double     ;
-	else if (selection.find("longdouble") != std::string::npos) this->type = LongDouble ;
-	else if (selection.find("string"    ) != std::string::npos) this->type = String     ;
-	else if (selection.find("class"     ) != std::string::npos) this->type = ClassMember;
+	if (selection.find("bool") != std::string::npos) this->type = Bool;
+	else if (selection.find("char") != std::string::npos) this->type = Char;
+	else if (selection.find("short") != std::string::npos) this->type = Short;
+	else if (selection.find("int") != std::string::npos) this->type = Int;
+	else if (selection.find("longdouble") != std::string::npos) this->type = LongDouble;
+	else if (selection.find("longlong") != std::string::npos) this->type = LongLong;
+	else if (selection.find("long") != std::string::npos) this->type = Long;
+	else if (selection.find("float") != std::string::npos) this->type = Float;
+	else if (selection.find("double") != std::string::npos) this->type = Double;
+	else if (selection.find("string") != std::string::npos) this->type = String;
+	else if (selection.find("class") != std::string::npos) {
+		std::pair <std::string, std::string> toSet = recieveDifferentClassMember();
+		this->type = ClassMember;
+		this->name = toSet.first;
+		this->name.append(".");
+		this->name.append(toSet.second);
+	}
+}
+
+std::pair <std::string, std::string> CustomAttribute::recieveDifferentClassMember() const
+{
+	std::pair <std::string, std::string> result;
+	std::cout << "Please select the Entity of which you want to extract the attribute\n";
+	CCList::Class* temporary = MainList.selectNode();
+	unsigned int index;
+	std::cout << "Which attribute do you want to use?\n";
+	temporary->Entity.printAttributes();
+	std::cin >> index;
+	while(true)
+	{
+		if (std::cin.fail() || index > temporary->Entity.getAttributes().size()) std::cout << "Invalid input!\n";
+		else break;
+	}
+	result.first  = temporary->Entity.getName();
+	result.second = temporary->Entity.getAttributes().at(index - 1).getName();
+	return result;
 }
 
 std::string CustomAttribute::resolveType() const
 {
 	std::string rType;
-	switch(this->type)
+	switch (this->type)
 	{
 	case 0: rType = "bool";
 		break;
@@ -76,7 +102,7 @@ std::string CustomAttribute::resolveType() const
 		break;
 	case 9: rType = "string";
 		break;
-	case 10: //set up for different custom class;
+	case 10:rType = this->name;
 		break;
 	default: throw "Error resolving type!\n";
 	}

@@ -27,4 +27,6 @@ public:
 	bool isEmpty() const;
 	void addAttributeToNode(Class* selection) const;
 };
+
+CCList MainList;
 #endif

@@ -16,21 +16,11 @@ void CustomClass::addAttribute()
 	this->attributes.push_back(newAttribute);
 }
 
-std::string CustomClass::getName() const
-{
-	return name;
-}
-
-std::vector<CustomAttribute> CustomClass::getAttributes() const
-{
-	return attributes;
-}
-
 void CustomClass::printAttributes() const
 {
 	if (attributes.size() == 0) throw "Class contains no Attributes yet!\n";
 	for (unsigned int i = 0; i < attributes.size(); i++)
-		std::cout << i+1 << ": Type : " << attributes.at(i).resolveType() << "  Name : "  << attributes.at(i).getName() << std::endl;
+		std::cout << i + 1 << ": Type : " << attributes.at(i).resolveType() << "  Name : " << attributes.at(i).getName() << std::endl;
 }
 
 void CustomClass::removeAttribute()
@@ -40,11 +30,26 @@ void CustomClass::removeAttribute()
 	std::cout << "The available attributes are: \n\n";
 	printAttributes();
 	std::cin >> selection;
-	while(true)
-	{		
+	while (true)
+	{
 		if (std::cin.fail()) std::cin >> selection;
 		else if (selection > attributes.size());
 		else break;
 	}
 	attributes.erase(attributes.begin() + (selection - 1));
+}
+
+void CustomClass::setAttributes(std::vector<CustomAttribute> input)
+{
+	this->attributes = input;
+}
+
+std::string CustomClass::getName() const
+{
+	return name;
+}
+
+std::vector<CustomAttribute> CustomClass::getAttributes() const
+{
+	return attributes;
 }

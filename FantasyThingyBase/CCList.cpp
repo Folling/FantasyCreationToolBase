@@ -7,15 +7,13 @@ CCList::CCList()
 	end = nullptr;
 }
 
-
 CCList::~CCList()
 {
-	
 }
 
 void CCList::newNode()
 {
-	if(this->begin == nullptr)
+	if (this->begin == nullptr)
 	{
 		Class* node = new Class;
 		node->index = 1;
@@ -26,12 +24,12 @@ void CCList::newNode()
 	}
 	else
 	{
-		Class* node = new Class;		
+		Class* node = new Class;
 		node->prev = end;
 		end->next = node;
 		node->index = end->index + 1; //increases index by one for each node
 		node->next = nullptr;
-		end = node;			
+		end = node;
 	}
 }
 
@@ -39,7 +37,7 @@ void CCList::printList() const
 {
 	if (isEmpty()) throw "List is Empty!\n";
 	Class* iterator = begin;
-	while(iterator != nullptr)
+	while (iterator != nullptr)
 	{
 		std::cout << iterator->index << " : " << iterator->Entity.getName() << std::endl;
 		iterator = iterator->next;
@@ -48,19 +46,21 @@ void CCList::printList() const
 
 CCList::Class* CCList::selectNode() const
 {
-		if (isEmpty()) throw "List is empty!\n";
-		Class* selection = begin;
-		int index;
+	if (isEmpty()) throw "List is empty!\n";
+	Class* selection = begin;
+	int index;
 
-		std::cout << "The available Classes are: \n";
-		printList();
+	std::cout << "The available Classes are: \n";
+	printList();
 
-		while (true) {
+	while (true)
+	{
 		std::cout << "Please enter the Index of the Class you want to select\n";
 		while (true)
 		{
 			std::cin >> index;
-			if (std::cin.fail()) {
+			if (std::cin.fail())
+			{
 				std::cout << "Invalid Input!\n";
 				std::cout << "Pleas re-enter the index!\n";
 				std::cin.clear();
@@ -79,7 +79,7 @@ CCList::Class* CCList::selectNode() const
 }
 
 void CCList::removeNode(Class* selection)
-{	
+{
 	if (isEmpty()) throw "List doesn't contain any Entities yet!\n";
 	if (selection == begin)
 	{
@@ -89,17 +89,17 @@ void CCList::removeNode(Class* selection)
 		delete del;
 		return;
 	}
-	if(selection == end)
+	if (selection == end)
 	{
-		Class * del = end;
+		Class* del = end;
 		end->next = nullptr;
 		end = end->prev;
 		delete del;
 		return;
 	}
-	for(Class* iterator = begin; iterator!= nullptr; iterator = iterator->next)
-	{		
-		if(iterator == selection)
+	for (Class* iterator = begin; iterator != nullptr; iterator = iterator->next)
+	{
+		if (iterator == selection)
 		{
 			Class* del = selection;
 			selection = selection->next;
