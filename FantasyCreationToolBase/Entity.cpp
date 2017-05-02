@@ -35,7 +35,7 @@ void Entity::removeEntity() const
 	if (entityListIsEmpty()) throw "List is Empty!\n";
 	eItr selection = selectEntity();
 	eItr temp = selection;
-	temp--;
+	//temp--;
 	EntityList.erase(selection);
 	for(; temp != EntityList.end(); temp++)
 	{
@@ -47,7 +47,7 @@ eItr Entity::selectEntity() const
 {
 	if (entityListIsEmpty()) throw "List is Empty!\n";
 	std::cout << "Please select the index of the entity you want to select\n";
-	std::cout << "The availabel entities are :\n";
+	std::cout << "The availabe entities are :\n";
 	printEntityList();
 	uint selIndex;
 	std::cin >> selIndex;
@@ -56,15 +56,11 @@ eItr Entity::selectEntity() const
 	while(true)
 	{
 		if (std::cin.fail()) {
-			std::cout << "Invalid input! Please enter an integer!\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			validateInput("Invalid input. Please enter an integer.");			
 			std::cin >> selIndex;
 		}
 		else if (selIndex > EntityList.back().index || selIndex <= 0) {
-			std::cout << "Index is out of range! Please enter a valid index!\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			validateInput("Index is out of range. Please enter a valid index.");			
 			std::cin >> selIndex;
 		}
 		else break;
@@ -72,7 +68,7 @@ eItr Entity::selectEntity() const
 
 	//returns the iterator if the index is = to the selected index
 	for (eItr i = EntityList.begin(); i != EntityList.end(); i++) if (i->index == selIndex) return i; 
-	throw "No idea how but you fucked it up\n selIndex is :" + selIndex;
+	throw "No idea how but you fucked it up\nselIndex is :" + selIndex;
 }
 
 bool Entity::entityListIsEmpty() const
@@ -99,9 +95,7 @@ void Entity::addAttribute()
 	while (true)
 	{
 		if (determineAttributeType(typeSel, &toAdd) == -1) {
-			std::cout << "Invalid type, please try again: \n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			validateInput("Invalid type. Please try again.");			
 			std::cin >> typeSel;
 		}
 		else break;
@@ -112,9 +106,7 @@ void Entity::addAttribute()
 		while (true)
 		{
 			if (std::cin.fail()) {
-				std::cout << "Invalid input. Expected: " << typeid(toAdd.name).name() << " Please try again\n";
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				validateInput("Invalid input. Please try again.");
 				std::cin >> toAdd.name;
 			}
 			else break;
@@ -132,10 +124,8 @@ void Entity::removeAttribute()
 	std::cout << "Which attribute do you want to remove?";
 	std::cin >> selIndex;
 	while (true) {
-		if (std::cin.fail() || index > this->attributes.size()) {
-			std::cout << "Invalid input! Please enter a valid index!\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (std::cin.fail() || index > this->attributes.size()) {			
+			validateInput("Invalid input. Please enter a valid index.");
 			std::cin >> index;
 		}
 		else break;
@@ -188,9 +178,7 @@ std::pair<std::string, std::string> Entity::receiveDifferentEntityMember() const
 	while (true)
 	{
 		if (std::cin.fail() || index > selection->attributes.size()) {
-			std::cout << "Invalid input! Please enter a valid index!\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		    validateInput("Invalid input. Please enter a valid index.");
 			std::cin >> selIndex;
 		}
 		else break;
@@ -232,4 +220,16 @@ std::string Entity::resolveAttributeType(c_aItr selection) const
 	default: throw "Unknown type!\n";
 	}
 	return rType;
+}
+
+void Entity::validateInput(std::string errorMsg) const
+{
+	std::cout << errorMsg << std::endl;
+	clearInput();
+}
+
+void Entity::clearInput() const
+{
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

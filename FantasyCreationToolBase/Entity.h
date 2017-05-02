@@ -39,13 +39,16 @@ public:
 public:
 	int determineAttributeType(std::string type, attribute* selection) const;
 	std::pair<std::string, std::string> receiveDifferentEntityMember() const;
-	std::string resolveAttributeType(c_aItr selection) const;	
+	std::string resolveAttributeType(c_aItr selection) const;
+public:
+	void validateInput(std::string errorMsg) const;
+	void clearInput() const;
 public:
 	uint index = 0;
 	std::pair<std::string, std::string> classNameSyntax;
 private:
 	std::string name;
-	std::list<attribute> attributes;	
+	std::list<attribute> attributes;
 };
 
 enum Type

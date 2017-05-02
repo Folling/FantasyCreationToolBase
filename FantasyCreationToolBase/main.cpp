@@ -5,31 +5,38 @@ void printInfo();
 int main()
 {
 	Entity List;
-	int input;
+	std::string input;
 	printInfo();
 	while (true)
 	{
 		std::cout << "Please enter what you want to do\n";
 		std::cin >> input;
+		while(true){
+			if ( input.size() > 1 || input.at(0) > '8' || input.at(0) < '1') {
+				List.validateInput("Invalid input. Please enter a valid index.");
+				std::cin >> input;
+			}
+			else break;
+		}
 		std::cout << "\n";
 		try {
-			switch (input)
+			switch (input.at(0))
 			{
-			case 1: List.newEntity();
+			case '1': List.newEntity();
 				break;
-			case 2: List.selectEntity()->addAttribute();
+			case '2': List.selectEntity()->addAttribute();
 				break;
-			case 3: List.printEntityList();
+			case '3': List.printEntityList();
 				break;
-			case 4: List.selectEntity()->printAttributes();
+			case '4': List.selectEntity()->printAttributes();
 				break;
-			case 5: List.removeEntity();
+			case '5': List.removeEntity();
 				break;
-			case 6: List.selectEntity()->removeAttribute();
+			case '6': List.selectEntity()->removeAttribute();
 				break;
-			case 7: printInfo();
+			case '7': printInfo();
 				break;
-			case 8: exit(1);
+			case '8': exit(1);
 
 			default: std::cout << "Invalid Input!\n";
 			}
@@ -39,6 +46,7 @@ int main()
 		{
 			std::cout << msg;
 		}
+		List.clearInput();
 	}
 
 }
