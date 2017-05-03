@@ -24,9 +24,6 @@ typedef std::list<attribute>::iterator aItr;
 class Entity
 {
 public:
-	Entity();
-	~Entity();
-public:
 	void newEntity() const;
 	void printEntityList() const;
 	void removeEntity() const;
@@ -43,27 +40,29 @@ public:
 public:
 	void validateInput(std::string errorMsg) const;
 	void clearInput() const;
+	void updateListIndices() const;
+	void updateAttributesIndices();
 public:
 	uint index = 0;
 	std::pair<std::string, std::string> classNameSyntax;
 private:
 	std::string name;
 	std::list<attribute> attributes;
+public :
+	std::string getName() const;
+	std::list<attribute> getAttributes() const;
 };
+
+typedef std::list<Entity>::iterator eItr;
+typedef std::list<Entity>::const_iterator c_eItr;
 
 enum Type
 {
-	Bool = 0,
-	Char = 1,
-	Short = 2,
-	Int = 3,
-	Long = 4,
-	LongLong = 5,
-	Float = 6,
-	Double = 7,
-	LongDouble = 8,
-	String = 9,
-	ClassMember = 10
+	Bool		  = 0,
+	Range         = 1,
+	Number		  = 2,
+	Word	      = 3,
+	ClassMember   = 4
 };
 
 #endif

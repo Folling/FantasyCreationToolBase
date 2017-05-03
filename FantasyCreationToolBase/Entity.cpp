@@ -2,17 +2,6 @@
 
 
 std::list<Entity> EntityList;
-typedef std::list<Entity>::iterator eItr;
-typedef std::list<Entity>::const_iterator c_eItr;
-
-Entity::Entity()
-{	
-}
-
-Entity::~Entity()
-{
-
-}
 
 void Entity::newEntity() const
 {
@@ -35,12 +24,8 @@ void Entity::removeEntity() const
 	if (entityListIsEmpty()) throw "List is Empty!\n";
 	eItr selection = selectEntity();
 	eItr temp = selection;
-	//temp--;
 	EntityList.erase(selection);
-	for(; temp != EntityList.end(); temp++)
-	{
-		selection->index--;
-	}
+	updateListIndices();
 }
 
 eItr Entity::selectEntity() const
@@ -122,6 +107,7 @@ void Entity::removeAttribute()
 	if(this->attributes.size() == 0) throw "Entity doesn't contain any attributes yet!\n";
 	uint selIndex;
 	std::cout << "Which attribute do you want to remove?";
+	this->printAttributes();
 	std::cin >> selIndex;
 	while (true) {
 		if (std::cin.fail() || index > this->attributes.size()) {			
@@ -133,10 +119,7 @@ void Entity::removeAttribute()
 	aItr selAttr;
 	for (aItr i = this->attributes.begin(); i != this->attributes.end(); i++) if (i->index == selIndex) selAttr = i;
 	this->attributes.erase(selAttr);
-	for (; selAttr != attributes.end(); selAttr++)
-	{
-		selAttr->index--;
-	}	
+	this->updateAttributesIndices();
 }
 
 int Entity::determineAttributeType(std::string type, attribute* selection) const
@@ -147,15 +130,9 @@ int Entity::determineAttributeType(std::string type, attribute* selection) const
 		else tolower(type.at(i));
 	}
 	if		(type.find("bool"	   ) != std::string::npos) selection->type = Bool;
-	else if (type.find("char"	   ) != std::string::npos) selection->type = Char;
-	else if (type.find("short"     ) != std::string::npos) selection->type = Short;
-	else if (type.find("int"	   ) != std::string::npos) selection->type = Int;
-	else if (type.find("longdouble") != std::string::npos) selection->type = LongDouble;
-	else if (type.find("longlong"  ) != std::string::npos) selection->type = LongLong;
-	else if (type.find("long"      ) != std::string::npos) selection->type = Long;
-	else if (type.find("float"     ) != std::string::npos) selection->type = Float;
-	else if (type.find("double"    ) != std::string::npos) selection->type = Double;
-	else if (type.find("string"    ) != std::string::npos) selection->type = String;
+	else if (type.find("range"	   ) != std::string::npos) selection->type = Range;
+	else if (type.find("number"    ) != std::string::npos) selection->type = Number;
+	else if (type.find("word"	   ) != std::string::npos) selection->type = Word;
 	else if (type.find("class"     ) != std::string::npos) {
 		std::pair <std::string, std::string> toSet = receiveDifferentEntityMember();
 		selection->type = ClassMember;
@@ -197,25 +174,13 @@ std::string Entity::resolveAttributeType(c_aItr selection) const
 	{
 	case 0: rType = "bool";
 		break;
-	case 1: rType = "char";
+	case 1: rType = "range";
 		break;
-	case 2: rType = "short";
+	case 2: rType = "number";
 		break;
-	case 3: rType = "int";
+	case 3: rType = "word";
 		break;
-	case 4: rType = "long";
-		break;
-	case 5: rType = "long long";
-		break;
-	case 6: rType = "float";
-		break;
-	case 7: rType = "double";
-		break;
-	case 8: rType = "long double";
-		break;
-	case 9: rType = "string";
-		break;
-	case 10:rType = selection->name;
+	case 4: rType = selection->name;
 		break;
 	default: throw "Unknown type!\n";
 	}
@@ -232,4 +197,34 @@ void Entity::clearInput() const
 {
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+void Entity::updateListIndices() const
+{
+	int count = 1;
+	for(eItr i = EntityList.begin(); i != EntityList.end(); i++)
+	{
+		i->index = count;
+		count++;
+	}
+}
+
+void Entity::updateAttributesIndices()
+{
+	int count = 1;
+	for(aItr i = attributes.begin(); i != attributes.end(); i++)
+	{
+		i->index = count;
+		count++;
+	}
+}
+
+std::string Entity::getName() const
+{
+	return name;
+}
+
+std::list<attribute> Entity::getAttributes() const
+{
+	return attributes;
 }
