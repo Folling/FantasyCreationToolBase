@@ -62,12 +62,12 @@ bool Entity::entityListIsEmpty() const
 	return false;
 }
 
-void Entity::printAttributes() const
+void Entity::printAttributes()
 {
 	if (this->attributes.size() == 0) throw "Entity contains no attributes yet!\n";
-	for(c_aItr i = attributes.begin(); i != attributes.end(); i++)
+	for(aItr i = attributes.begin(); i != attributes.end(); i++)
 	{
-		std::cout << i->index << ". attribute : " << i->name << " Type: " << resolveAttributeType(i) << std::endl;
+		std::cout << i->index << ". attribute : " << i->name << " Type: " << resolveAttributeType(*i) << std::endl;
 	}
 }
 
@@ -167,10 +167,10 @@ std::pair<std::string, std::string> Entity::receiveDifferentEntityMember() const
 	return result;
 }
 
-std::string Entity::resolveAttributeType(c_aItr selection) const
+std::string Entity::resolveAttributeType(attribute& selection) const
 {
 	std::string rType;
-	switch (selection->type)
+	switch (selection.type)
 	{
 	case 0: rType = "bool";
 		break;
@@ -180,7 +180,7 @@ std::string Entity::resolveAttributeType(c_aItr selection) const
 		break;
 	case 3: rType = "word";
 		break;
-	case 4: rType = selection->name;
+	case 4: rType = selection.name;
 		break;
 	default: throw "Unknown type!\n";
 	}

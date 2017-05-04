@@ -58,7 +58,7 @@ int main()
 					break;
 				case '2': Instances.printInstancesOfEntity(List.selectEntity());
 					break;
-				case '3': //removeInstance
+				case '3': //renameInstance
 					break;
 				case '4': List.printEntityList();
 					break;
@@ -103,7 +103,7 @@ void printInfo()
 	{
 		std::cout << "1 - Add an instance to an entity\n";
 		std::cout << "2 - Print all instances from an entity\n";
-		std::cout << "3 - delete an instance from an entity\n";
+		std::cout << "3 - Rename an instance from an entity\n";
 		std::cout << "4 - Print all entities\n";
 		std::cout << "5 - Print all attributes from a given entity\n";
 		std::cout << "6 - Show the menu again\n";

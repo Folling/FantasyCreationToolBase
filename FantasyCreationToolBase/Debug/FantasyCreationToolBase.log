@@ -1,5 +1,11 @@
 ﻿  EntityInstances.cpp
-c:\users\folling\documents\visual studio 2015\projects\fantasycreationtoolbase\fantasycreationtoolbase\entityinstances.cpp(110): warning C4018: '<': signed/unsigned mismatch
-c:\users\folling\documents\visual studio 2015\projects\fantasycreationtoolbase\fantasycreationtoolbase\entityinstances.cpp(119): warning C4018: '<': signed/unsigned mismatch
+c:\users\folling\documents\visual studio 2015\projects\fantasycreationtoolbase\fantasycreationtoolbase\entityinstances.cpp(116): warning C4018: '<': signed/unsigned mismatch
+c:\users\folling\documents\visual studio 2015\projects\fantasycreationtoolbase\fantasycreationtoolbase\entityinstances.cpp(125): warning C4018: '<': signed/unsigned mismatch
+c:\users\folling\documents\visual studio 2015\projects\fantasycreationtoolbase\fantasycreationtoolbase\entityinstances.cpp(165): warning C4018: '<': signed/unsigned mismatch
+  Entity.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  Generating Code...
   FantasyCreationToolBase.vcxproj -> C:\Users\Folling\documents\visual studio 2015\Projects\FantasyCreationToolBase\Debug\FantasyCreationToolBase.exe
   FantasyCreationToolBase.vcxproj -> C:\Users\Folling\documents\visual studio 2015\Projects\FantasyCreationToolBase\Debug\FantasyCreationToolBase.pdb (Partial PDB)

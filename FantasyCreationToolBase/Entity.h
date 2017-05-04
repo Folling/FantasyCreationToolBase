@@ -30,13 +30,13 @@ public:
 	std::list<Entity>::iterator selectEntity() const;
 	bool entityListIsEmpty() const;
 public:
-	void printAttributes() const;
+	void printAttributes();
 	void addAttribute();
 	void removeAttribute();
 public:
 	int determineAttributeType(std::string type, attribute* selection) const;
 	std::pair<std::string, std::string> receiveDifferentEntityMember() const;
-	std::string resolveAttributeType(c_aItr selection) const;
+	std::string resolveAttributeType(attribute& selection) const;
 public:
 	void validateInput(std::string errorMsg) const;
 	void clearInput() const;
